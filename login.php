@@ -19,5 +19,32 @@ if (!empty($user['authed'])) {
     redirect($page);
 }
 
+$data = array();
+$errors = array();
+
+if (!empty($_POST['auth'])) {
+    if (empty($_POST['username']) || empty($_POST['password'])) {
+        $errors['form-help'][] = 'Missing required fields';
+        if (empty($_POST['username'])) {
+            $errors['form-help'][] = 'Username field required';
+            $errors['username'] = 'Required';
+        }
+        else {
+            $username = $_POST['username'];
+        }
+        if (empty($_POST['password'])) {
+            $errors['form-help'][] = 'Password field required fields';
+            $errors['password'] = 'Required';
+        }
+        else {
+            $password = $_POST['password'];
+        }
+    }
+    if (!empty($_POST['remember_me'])) {
+        $remember_me = true;
+    }
+}
+
+
 include("views/login.php");
 echo $output;
