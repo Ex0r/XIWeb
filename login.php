@@ -18,3 +18,6 @@ if (!empty($user['authed'])) {
     }
     redirect($page);
 }
+
+include("views/login.php");
+echo $output;
