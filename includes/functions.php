@@ -19,7 +19,7 @@ function pagePermissions($page) {
  * redirect($page): Redirect the visitor to $page, taking into account PROTOCOL and BASE_PATH
  */
 function redirect($page) {
-    header("Location:". PROTOCOL . BASE_PATH . "/$page");
+    header("Location:". PROTOCOL . BASE_PATH . "$page");
 }
 
 function authenticate($username) {

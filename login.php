@@ -14,7 +14,7 @@ if (!empty($user['authed'])) {
         $_SESSION['destination'] = '';
     }
     else {
-        $page = "/index.php";
+        $page = "index.php";
     }
     redirect($page);
 }
