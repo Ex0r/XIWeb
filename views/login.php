@@ -8,7 +8,7 @@
 $output = '
     <html>
         <head>
-            <title>Look Im AJAXing!</title>
+            <title>XIWeb</title>
             <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> <!-- load bootstrap via CDN -->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         </head>
