@@ -28,6 +28,7 @@ $config['xiweb_name'] = 'xiweb'; // Name of the XIWeb Database (Required)
 // Account and character settings
 
 $config['allow_account_creation'] = TRUE; // Allow users to create accounts themselves [Default: TRUE]
+$config['allow_account_recovery'] = TRUE; // Allow users to recover their accounts [Default: TRUE]
 $config['allow_character_creation'] = TRUE; // Allow players to create new characters from the interface [Default: TRUE]
 $config['allow_advanced_jobs'] = FALSE; // Allow players to select advanced jobs at character creation [Default: FALSE]
 
