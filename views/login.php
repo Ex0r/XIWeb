@@ -35,11 +35,8 @@ $output .= '
               <label class="control-label" for="username">Password '.(!empty($errors['password']) ?  '- <span class="glyphicon glyphicon-remove"></span> '.$errors['password'] : '').'</label>
               <input type="password" name="password" class="form-control" value="'.$password.'" />
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="remember_me" '.(!empty($remember_me) ? 'checked' : '').'> Remember me
-              </label>
-            </div>
+            '.($config['allow_account_recovery'] ? '<p>Forgot your password? <a href="recover_password.php">Recover my password</a> </p>' : '').'
+            '.($config['allow_account_creation'] ? '<p>Need an account? <a href="register.php">Register</a></p>' : '').'
             <input type="hidden" name="auth" value="1">
             <button class="btn btn-primary" type="submit">Login</button>
           </form>

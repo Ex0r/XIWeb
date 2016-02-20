@@ -7,6 +7,6 @@ require_once("includes/global.php");
 if (pagePermissions(basename($_SERVER['SCRIPT_FILENAME'],".php")) == 'require_auth') {
     if (empty($user['authed'])) {
         $_SESSION['destination'] = basename($_SERVER['SCRIPT_FILENAME']);
-        redirect("login.php"); // Should be changed to the login page once it's completed
+        redirect("/login.php"); // Should be changed to the login page once it's completed
     }
 }

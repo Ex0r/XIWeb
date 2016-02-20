@@ -19,12 +19,6 @@ if (!empty($user['authed'])) {
     redirect($page);
 }
 
-if (!empty($_COOKIE['xiweb_auth_username'])) {
-  $_SESSION['xiweb_auth'] = true;
-  $_SESSION['xiweb_auth_username'] = $_COOKIE['xiweb_auth_username'];
-  authenticate($_SESSION['xiweb_auth_username']);
-}
-
 $username = '';
 $password = '';
 
@@ -55,13 +49,12 @@ if (!empty($_POST['auth'])) {
         $errors['username'] = 'Invalid';
         $errors['password'] = 'Invalid';
       }
-    }
-    if (!empty($_POST['remember_me'])) {
-        $remember_me = true;
-        setcookie('xiweb_auth_username',$username);
-    }
-    else {
-      $_COOKIE['xiweb_auth_username'] = '';
+      else {
+        authenticate($username);
+        $_SESSION['xiweb_auth'] = true;
+        $_SESSION['xiweb_auth_username'] = $username;
+        redirect("/index.php");
+      }
     }
 }
 
