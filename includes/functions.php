@@ -25,4 +25,9 @@ function redirect($page) {
 function authenticate($username) {
     $user['authed'] = TRUE;
     $user['id'] = '1'; // Hardcoded until database implementation is complete
+    return $user;
+}
+
+function doLogin($username,$password) {
+  return TRUE;
 }

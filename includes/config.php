@@ -9,7 +9,7 @@ define('INSTALLED',TRUE);
  */
 
 define('PROTOCOL',"http://"); // Protocol to use (http:// or https://) [Default: [http://]
-define('BASE_PATH',"jfurnas.localhost/XIWeb"); // Base path of the install (After the protocol, leave out trailing /)
+define('BASE_PATH',"localhost"); // Base path of the install (After the protocol, leave out trailing /)
 
 $config['dspdb_host'] = 'localhost'; // Hostname of the DSP Database Server
 $config['dspdb_port'] = '3306'; // Port of the DSP Database Server [Default: 3306]

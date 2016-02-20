@@ -14,13 +14,19 @@ if (!empty($user['authed'])) {
         $_SESSION['destination'] = '';
     }
     else {
-        $page = "index.php";
+        $page = "/index.php";
     }
     redirect($page);
 }
 
-$data = array();
-$errors = array();
+if (!empty($_COOKIE['xiweb_auth_username'])) {
+  $_SESSION['xiweb_auth'] = true;
+  $_SESSION['xiweb_auth_username'] = $_COOKIE['xiweb_auth_username'];
+  authenticate($_SESSION['xiweb_auth_username']);
+}
+
+$username = '';
+$password = '';
 
 if (!empty($_POST['auth'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
@@ -33,18 +39,33 @@ if (!empty($_POST['auth'])) {
             $username = $_POST['username'];
         }
         if (empty($_POST['password'])) {
-            $errors['form-help'][] = 'Password field required fields';
+            $errors['form-help'][] = 'Password field required';
             $errors['password'] = 'Required';
         }
         else {
             $password = $_POST['password'];
         }
     }
+    else {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      
+      if (!doLogin($username,$password)) {
+        $errors['form-help'][] = 'Could not log in using the credentials provided';
+        $errors['username'] = 'Invalid';
+        $errors['password'] = 'Invalid';
+      }
+    }
     if (!empty($_POST['remember_me'])) {
         $remember_me = true;
+        setcookie('xiweb_auth_username',$username);
+    }
+    else {
+      $_COOKIE['xiweb_auth_username'] = '';
     }
 }
 
-
+include("views/header.php");
 include("views/login.php");
+include("views/footer.php");
 echo $output;

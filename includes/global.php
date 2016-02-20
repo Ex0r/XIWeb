@@ -9,5 +9,5 @@ session_start();
 require_once("includes/functions.php");
 
 if (!empty($_SESSION['xiweb_auth'])) {
-    authenticate($_SESSION['xiweb_auth']['username']);
+    $user = authenticate($_SESSION['xiweb_auth_username']);
 }
