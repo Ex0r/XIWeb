@@ -10,3 +10,8 @@ if (pagePermissions(basename($_SERVER['SCRIPT_FILENAME'],".php")) == 'require_au
         redirect("/login.php"); // Should be changed to the login page once it's completed
     }
 }
+
+include("themes/".$config['theme']."/views/header.php");
+include("themes/".$config['theme']."/views/index.php");
+include("themes/".$config['theme']."/views/footer.php");
+echo $output;
