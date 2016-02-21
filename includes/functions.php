@@ -5,13 +5,76 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ 
+function getCharacterName($charid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT charname FROM chars WHERE charid=:charid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':charid',$charid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return '';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return '';
+    }
+    else {
+      return $arrReturn[0]['charname'];
+    }
+  }
+}
+ 
+function getCharacterList($accid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT * FROM chars JOIN char_stats ON chars.charid=char_stats.charid JOIN char_jobs ON chars.charid=char_jobs.charid WHERE accid=:accid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return 'error';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 'empty';
+    }
+    else {
+      return $arrReturn;
+    }
+  }
+}
 
 /*
  * pagePermissions($page): Check the permissions of the page to see if authentication is required
  */
 function pagePermissions($page) {
-    if ($page == "index") {
-        return "require_auth";
+    global $xiconn;
+    
+    $strSQL = "SELECT * FROM page_permissions WHERE pagename = :pagename";
+    $statement = $xiconn->prepare($strSQL);
+    $statement->bindValue(':pagename',$page);
+    
+    if (!$statement->execute()) {
+      watchdog($statement->errorInfo(),'SQL');
+      return 'no_auth';
+    }
+    else {
+      $arrReturn = $statement->fetchAll();
+      
+      if (empty($arrReturn)) {
+        return 'no_auth';
+      }
+      else {
+        return $arrReturn[0]['permission'];
+      }
     }
 }
 
@@ -152,3 +215,73 @@ function doLogin($username,$password) {
     return FALSE;
   }
 }
+
+function characterVisible($charid) {
+  global $xiconn;
+  
+  $strSQL = "SELECT * FROM chars_visibility WHERE charid=:charid";
+  $statement = $xiconn->prepare($strSQL);
+  $statement->bindValue(':charid',$charid);
+  
+  if (!$statement->execute()) {
+    return FALSE;
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return FALSE;
+    }
+    else {
+      return $arrReturn[0]['status'];
+    }
+  }
+}
+
+function characterFavorited($charid,$accid) {
+  global $xiconn;
+  
+  $strSQL = "SELECT * FROM chars_favorites WHERE charid=:charid AND accid=:accid";
+  $statement = $xiconn->prepare($strSQL);
+  $statement->bindValue(':charid',$charid);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    return FALSE;
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+}
+
+function getZoneName($zoneid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT name FROM zone_settings WHERE zoneid=:zoneid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':zoneid',$zoneid);
+  
+  if (!$statement->execute()) {
+    return 'Error retrieving zone name';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 'Error retrieving zone name';
+    }
+    else {
+      return str_replace('_',' ',$arrReturn[0]['name']);
+    }
+  } 
+}
+

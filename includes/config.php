@@ -11,7 +11,7 @@ define('INSTALLED',TRUE);
 define('PROTOCOL',"http://"); // Protocol to use (http:// or https://) [Default: [http://]
 define('BASE_PATH',"localhost"); // Base path of the install (After the protocol, leave out trailing /)
 
-$config['dspdb_host'] = 'localhost'; // Hostname of the DSP Database Server
+$config['dspdb_host'] = 'dspdb'; // Hostname of the DSP Database Server
 $config['dspdb_port'] = '3306'; // Port of the DSP Database Server [Default: 3306]
 $config['dspdb_user'] = 'dspdb'; // Username of the DSP Database User
 $config['dspdb_pass'] = 'dspdb'; // Password of the DSP Database User
@@ -36,4 +36,8 @@ $config['allow_advanced_jobs'] = FALSE; // Allow players to select advanced jobs
 
 $config['enable_friends'] = TRUE; // Enable the Friends list [Default: TRUE]
 $config['enable_message'] = TRUE; // Enable the Messaging system [Default: TRUE]
+
+// Theme selection
+
+$config['theme'] = 'default'; // The theme to use for the interface (Located in the /themes/ directory) [Default: default]
 ?>

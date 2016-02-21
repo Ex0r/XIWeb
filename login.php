@@ -53,12 +53,14 @@ if (!empty($_POST['auth'])) {
         authenticate($username);
         $_SESSION['xiweb_auth'] = true;
         $_SESSION['xiweb_auth_username'] = $username;
-        redirect("/index.php");
+        if (!empty($_SESSION['destination'])) { $page = $_SESSION['destination']; } else { $page = "/index.php"; }
+        redirect("/$page");
+        $_SESSION['destination'] = '';
       }
     }
 }
 
-include("views/header.php");
-include("views/login.php");
-include("views/footer.php");
+include("themes/".$config['theme']."/views/header.php");
+include("themes/".$config['theme']."/views/login.php");
+include("themes/".$config['theme']."/views/footer.php");
 echo $output;

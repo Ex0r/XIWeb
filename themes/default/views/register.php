@@ -10,7 +10,7 @@
 $output .= '
   <body>
     <div class="col-sm-5 col-sm-offset-3">
-      <img src="views/images/ff11_logo.png" id="splashlogo">';
+      <img src="themes/'.$config['theme'].'/views/images/ff11_logo.png" id="splashlogo">';
 if (!empty($errors)) {
     $output .= '
       <div class="alert alert-danger" role="alert">

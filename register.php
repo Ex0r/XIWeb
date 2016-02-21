@@ -111,7 +111,7 @@ if (!empty($_POST['register'])) {
     }
 }
 
-include("views/header.php");
-include("views/register.php");
-include("views/footer.php");
+include("themes/".$config['theme']."/views/header.php");
+include("themes/".$config['theme']."/views/register.php");
+include("themes/".$config['theme']."/views/footer.php");
 echo $output;
