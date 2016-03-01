@@ -32,10 +32,14 @@ $config['allow_account_recovery'] = TRUE; // Allow users to recover their accoun
 $config['allow_character_creation'] = TRUE; // Allow players to create new characters from the interface [Default: TRUE]
 $config['allow_advanced_jobs'] = FALSE; // Allow players to select advanced jobs at character creation [Default: FALSE]
 
-// Friends list and Messaging system
+// Optional systems (Messaging, friends list and support system, beastiary)
 
 $config['enable_friends'] = TRUE; // Enable the Friends list [Default: TRUE]
-$config['enable_message'] = TRUE; // Enable the Messaging system [Default: TRUE]
+$config['enable_messages'] = TRUE; // Enable the Messaging system [Default: TRUE]
+$config['enable_support'] = TRUE; // Enable the ticketing and support system [Default: TRUE]
+$config['enable_beastiary'] = TRUE; // Enable the beastiary viewer [Default: TRUE]
+$config['enable_item_browser'] = TRUE; // Enable the item browser [Default: TRUE]
+$config['enable_ah'] = TRUE; // Enable the auction house viewer [Default: TRUE]
 
 // Theme selection
 
