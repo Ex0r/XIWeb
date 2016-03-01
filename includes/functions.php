@@ -28,6 +28,29 @@ function getCharacterName($charid) {
     }
   }
 }
+
+function getCharacter($charid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT * FROM chars JOIN char_stats ON chars.charid=char_stats.charid JOIN char_jobs ON chars.charid=char_jobs.charid WHERE chars.charid=:charid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':charid',$charid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return 'error';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 'empty';
+    }
+    else {
+      return $arrReturn;
+    }
+  }
+}
  
 function getCharacterList($accid) {
   global $dbconn;
@@ -285,3 +308,126 @@ function getZoneName($zoneid) {
   } 
 }
 
+function getTitle($titleid) {
+  global $xiconn;
+  
+  $strSQL = "SELECT title FROM titles WHERE titleid=:titleid";
+  $statement = $xiconn->prepare($strSQL);
+  $statement->bindValue(':titleid',$titleid);
+  
+  if (!$statement->execute()) {
+    return 'Error retrieving zone name';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 'Error retrieving zone name';
+    }
+    else {
+      return ucwords(strtolower(str_replace('_',' ',$arrReturn[0]['title'])));
+    }
+  } 
+}
+
+function getFriendsList($accid) {
+  global $xiconn;
+  
+  $friendsList = array();
+  
+  $strSQL = "SELECT * FROM accounts_friends WHERE accid=:accid OR friendaccid=:accid";
+  $statement = $xiconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return 'error';
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 'empty';
+    }
+    else {
+      foreach ($arrReturn as $fr) {
+        if ($fr['status'] == 0) {
+          $friendsList['pending'][] = $fr;
+        }
+        elseif ($fr['status'] == 1) {
+          $friendsList['accepted'][] = $fr;
+        }
+      }
+      return $friendsList;
+    }
+  }
+}
+
+function isOnline($accid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT * FROM accounts_sessions WHERE accid=:accid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return FALSE;
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
+}
+
+function getAccount($accid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT * FROM accounts WHERE id=:accid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return NULL;
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return NULL;
+    }
+    else {
+      return $arrReturn[0]['login'];
+    }
+  }
+}
+
+function getOnlineCharacterID($accid) {
+  global $dbconn;
+  
+  $strSQL = "SELECT * FROM accounts_sessions WHERE accid=:accid";
+  $statement = $dbconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+    return NULL;
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return NULL;
+    }
+    else {
+      return $arrReturn[0]['charid'];
+    }
+  }
+}

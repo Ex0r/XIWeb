@@ -26,34 +26,34 @@ $output .= '
               </tr>
             </thead>
             <tbody>';
-            if ($characters == 'error') {
+            if ($chars == 'error') {
               $output .= '
               <tr>
                 <td colspan=5><em>Could not retrieve characters</em></td>
               </tr>';
             }
-            elseif ($characters == 'empty') {
+            elseif ($chars == 'empty') {
               $output .= '
               <tr>
                 <td colspan=5><em>You don\'t have any characters '.($config['allow_character_creation'] ? 'use the \'Create Character\' button above to make one' : '').'</em></td>
               </tr>';
             }
             else {
-              foreach ($characters as $character) {
-                if (characterFavorited($character['charid'],$user['id'])) {
+              foreach ($chars as $char) {
+                if (characterFavorited($char['charid'],$user['id'])) {
                   $output .= '<tr class="success">';
                 }
-                elseif (characterVisible($character['charid']) == 1) {
+                elseif (characterVisible($char['charid']) == 1) {
                   $output .= '<tr class="warning">';
                 }
                 else {
                   $output .= '<tr>';
                 }
                 $output .= '
-                <td><a href="characters.php?id='.$character['charid'].'">'.$character['charname'].'</a></td>
-                <td>'.$character['mlvl'].strtoupper($jobs[$character['mjob']]).(!empty($character['sjob']) ? '/'.$character['slvl'].strtoupper($jobs[$character['sjob']]) : '').'</td>
-                <td>'.getZoneName($character['pos_zone']).'</td>
-                <td>'.(characterVisible($character['charid']) == 0 ? '<span class="glyphicon glyphicon-eye-open" title="Make Character Hidden"></span>' : '<span class="glyphicon glyphicon-eye-close" title="Make Character Visible"></span>').' | '.(characterFavorited($character['charid'],$user['id']) ? '<span class="glyphicon glyphicon-heart" title="Make Character Favorite"></span>' : '<span class="glyphicon glyphicon-heart-empty" title="Unfavorite Character"></span>').' | <span class="glyphicon glyphicon-remove" title="Delete Character"></span></td>
+                <td><a href="characters.php?id='.$char['charid'].'">'.$char['charname'].'</a></td>
+                <td>'.$char['mlvl'].strtoupper($jobs[$char['mjob']]).(!empty($char['sjob']) ? '/'.$char['slvl'].strtoupper($jobs[$char['sjob']]) : '').'</td>
+                <td>'.getZoneName($char['pos_zone']).'</td>
+                <td>'.(characterVisible($char['charid']) == 0 ? '<span class="glyphicon glyphicon-eye-open" title="Make Character Hidden"></span>' : '<span class="glyphicon glyphicon-eye-close" title="Make Character Visible"></span>').' | '.(characterFavorited($char['charid'],$user['id']) ? '<span class="glyphicon glyphicon-heart" title="Make Character Favorite"></span>' : '<span class="glyphicon glyphicon-heart-empty" title="Unfavorite Character"></span>').' | <span class="glyphicon glyphicon-remove" title="Delete Character"></span></td>
               </tr>';
               }
             }

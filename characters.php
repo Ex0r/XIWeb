@@ -12,9 +12,19 @@ if (pagePermissions(basename($_SERVER['SCRIPT_FILENAME'],".php")) == 'require_au
     }
 }
 
-$characters = getCharacterList($user['id']);
+// If we are viewing a character sheet, let's include the view for that. Otherwise, let's display the main characters display
+
+if (!empty($_GET['id'])) {
+    $charid = $_GET['id'];
+    $char = getCharacter($charid);
+    $page = "character_sheet";
+}
+else {
+  $chars = getCharacterList($user['id']);
+  $page = "characters";
+}
 
 include("themes/".$config['theme']."/views/header.php");
-include("themes/".$config['theme']."/views/characters.php");
+include("themes/".$config['theme']."/views/$page.php");
 include("themes/".$config['theme']."/views/footer.php");
 echo $output;

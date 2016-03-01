@@ -18,6 +18,9 @@ if (!empty($user['authed'])) {
     }
     redirect($page);
 }
+elseif (!$config['allow_account_creation']) {
+  redirect("/login.php");
+}
 
 $username = '';
 $email = '';

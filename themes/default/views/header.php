@@ -30,48 +30,50 @@ $output =
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Home</a></li>
+        <li><a href="'.PROTOCOL . BASE_PATH .'/index.php">Home</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Characters <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Create Character</a></li>
-            <li><a href="characters.php"><span class="glyphicon glyphicon-eye-open"></span> View All Characters</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 1</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 2</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 3</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 4</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 5</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 6</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 7</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 8</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 9</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 10</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 11</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 12</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 13</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 14</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 15</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Character 16</a></li>
+            '.($config['allow_character_creation'] ? '<li><a href="#"><span class="glyphicon glyphicon-plus"></span> Create Character</a></li>' : '').'
+            <li><a href="'.PROTOCOL . BASE_PATH .'/characters.php"><span class="glyphicon glyphicon-eye-open"></span> View All Characters</a></li>
+            <li role="separator" class="divider"></li>';
+            $characters = getCharacterList($user['id']);
+              if ($characters !== 'empty' && $characters !== 'error') {
+                foreach ($characters as $character) {
+                  $output .= '
+            <li><a href="'.PROTOCOL . BASE_PATH .'/characters.php?id='.$character['charid'].'"><span class="glyphicon glyphicon-user"></span> '.$character['charname'].'</a></li>
+                  ';
+                }
+              }
+            $output .= '
           </ul>
         </li>
-        <li><a href="#">Auction House</a></li>
+        '.($config['enable_ah'] ? '<li><a href="#">Auction House</a></li>' : '').'
         <li><a href="#">World Map</a></li>
-        <li><a href="#">Beastiary</a></li>
-        <li><a href="#">Item Browser</a></li>
-        <li><a href="#">Support System</a></li>
+        '.($config['enable_beastiary'] ? '<li><a href="#">Beastiary</a></li>' : '').'
+        '.($config['enable_item_browser'] ? '<li><a href="#">Items</a></li>' : '').'
+        '.($config['enable_support'] ? '<li><a href="#">Support</a></li>' : '').'
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Account</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="'.PROTOCOL . BASE_PATH .'/logout.php">Logout</a></li>';
+        if ($config['enable_friends']) {
+          $output .= '
         <li><a href="#">Friends <span class="badge">10</span></a></li>
+          ';
+        }
+        if ($config['enable_messages']) {
+          $output .= '
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages <span class="badge">1</span><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Compose Message</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> View Messages</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> View Messages <span class="badge">1</span></a></li>
           </ul>
         </li>
+          ';
+        }
+        $output .= '
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
