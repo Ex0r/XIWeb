@@ -431,3 +431,25 @@ function getOnlineCharacterID($accid) {
     }
   }
 }
+
+function getNewMessageCount($accid) {
+  global $xiconn;
+  
+  $strSQL = "SELECT COUNT(*) AS total FROM `messages` JOIN accounts_messages ON messages.message_id=accounts_messages.message_id WHERE NOT sender_id=:accid AND user_id=:accid AND status='0'";
+  $statement = $xiconn->prepare($strSQL);
+  $statement->bindValue(':accid',$accid);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+    
+    if (empty($arrReturn)) {
+      return 0;
+    }
+    else {
+      return $arrReturn[0]['total'];
+    }
+  }
+}

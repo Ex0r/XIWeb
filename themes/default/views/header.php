@@ -65,10 +65,10 @@ $output =
         if ($config['enable_messages']) {
           $output .= '
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages <span class="badge">1</span><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages '.(getNewMessageCount($user['id']) > 0 ? '<span class="badge">'.getNewMessageCount($user['id']).'</span>' : '').'<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Compose Message</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> View Messages <span class="badge">1</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> View Messages '.(getNewMessageCount($user['id']) > 0 ? '<span class="badge">'.getNewMessageCount($user['id']).'</span>' : '').'</a></li>
           </ul>
         </li>
           ';
