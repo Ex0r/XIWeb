@@ -1036,6 +1036,25 @@ INSERT INTO `titles` (`title`, `titleid`) VALUES
 ('THE_ONE_TRUE_PIONEER                      ', 933),
 ('BRINGER_OF_HOPE                           ', 934);
 
+-- Dumping structure for table `accounts_messages`
+CREATE TABLE IF NOT EXISTS `accounts_messages` (
+  `message_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` int(1) NOT NULL COMMENT '0 = unread, 1 = read, 2 = deleted'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table `messages`
+CREATE TABLE IF NOT EXISTS `messages` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender_id` int(11) NOT NULL,
+  `message_body` longtext NOT NULL,
+  `timestamp` int(11) NOT NULL,
+  PRIMARY KEY (`message_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
