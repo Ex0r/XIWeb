@@ -1,0 +1,28 @@
+{
+  "name": "XIWeb",
+  "homepage": "https://github.com/Ex0r/XIWeb",
+  "authors": [
+    "Rich Gomez <0xkione@gmail.com>"
+  ],
+  "description": "The front-end of a web interface for managing Supernova FFXI",
+  "main": "app.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "~0.2.15"
+  }
+}

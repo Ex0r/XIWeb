@@ -1,0 +1,17 @@
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 13px;
+}
+
+.navbar-nav > li > a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar-nav.navbar-right {
+    margin-right: 0;
+}
+
+.xi-body {
+    margin-top: 55px;
+}
