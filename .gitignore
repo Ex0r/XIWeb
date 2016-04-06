@@ -1,3 +1,4 @@
 includes/config.php
 client/node_modules/
 client/bower_components/
+/api/nbproject/private/
