@@ -1,12 +1,12 @@
 <?php
 
-/* XIWeb Character Controller for the API. 
+/* XIWeb Item Controller for the API. 
  * 
- * PARAMS LIST for $params[0] (characters):
+ * PARAMS LIST for $params[0] (items):
  * 
- * 1 - [character name] (or 'list' to list all characters)
- * 2 - [view]/[delete] (if character name specified) or [page number] (if 'list' specified)
- * 3 - [confirm] (if delete specified)
+ * 1 - [item name] (or 'list' to list all characters)
+ * 2 - [details]/[page number] (if 'list' specified)
+ * 
  * 
  *  
  */
