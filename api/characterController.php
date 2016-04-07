@@ -37,9 +37,9 @@ else {
                 $result = CHARACTER_DOESNT_EXIST;
             }
             else {
+                $result = $charDetails;
+                $charID = $charDetails['charid'];
                 if ($params[2] == 'view') { // If they are viewing the character
-                    $result = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['jobs'] = getCharacterJobs($charID);
                     $result['look'] = getCharacterLook($charID);
                     $result['profile'] = getCharacterProfile($charID);
@@ -51,71 +51,44 @@ else {
                     $result['visibility'] = getCharacterVisibility($charID);
                     $result['points'] = getCharacterPoints($charID);
                     $result['storage'] = getCharacterStorage($charID);
-                    
                 }
                 elseif ($params[2] == 'jobs') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['jobs'] = getCharacterJobs($charID);
                 }
                 elseif ($params[2] == 'stats') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['stats'] = getCharacterStats($charID);
                 }
                 elseif ($params[2] == 'details') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result = getCharacterDetails($charname);
                 }
                 elseif ($params[2] == 'visibility') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['visibility'] = getCharacterVisibility($charID);
                 }
                 elseif ($params[2] == 'storage') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['storage'] = getCharacterStorage($charID);
                 }
                 elseif ($params[2] == 'points') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['points'] = getCharacterPoints($charID);
                 }
                 elseif ($params[2] == 'profile') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['profile'] = getCharacterProfile($charID);
                 }
                 elseif ($params[2] == 'inventory') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['inventory'] = getCharacterInventory($charID);
                 }
                 elseif ($params[2] == 'equipment') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['equipment'] = getCharacterEquipment($charID);
                 }
                 elseif ($params[2] == 'experience') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['experience'] = getCharacterExperience($charID);
                 }
                 elseif ($params[2] == 'skills') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['skills'] = getCharacterSkills($charID);
                 }
                 elseif ($params[2] == 'spells') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['spells'] = getCharacterSpells($charID);
                 }
                 elseif ($params[2] == 'look') {
-                    $res = $charDetails;
-                    $charID = $charDetails['charid'];
                     $result['look'] = getCharacterLook($charID);
                 }
                 elseif ($params[2] == 'delete') { // If they decided to delete the character
