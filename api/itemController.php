@@ -26,11 +26,27 @@ else {
         $itemname = strtolower($params[1]);
         $itemname = str_replace(' ','_',$itemname);
         $itemDetails = getItemDetails($itemname);
+        $itemID = $itemDetails['itemid'];
         
-        $result = $itemDetails;
-       
-        if (empty($itemDetails)) {
-            $result = ITEM_DOESNT_EXIST;
+        if ($params[2] == 'type') {
+            
+            $result = getItemType($itemID);
+           
+            if (empty($itemDetails)) {
+                $result = ITEM_DOESNT_EXIST;
+            }
+        }
+        elseif ($params[2] == 'details') { // We are listing all the details of this item
+
+            $result = $itemDetails;
+            $result['type'] = getItemType($itemID);
+
+            if (empty($itemDetails)) {
+                $result = ITEM_DOESNT_EXIST;
+            }
+        }
+        else {
+            $result = INVALID_PARAMETER;
         }
     }
 }
