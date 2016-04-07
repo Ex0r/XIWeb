@@ -9,8 +9,12 @@
  * 
  */
 
-$dbconn = new PDO('mysql:host=localhost;dbname=xiweb;charset=utf8', 'user', 'password');
+$dbconn = new PDO('mysql:host=localhost;dbname=dspdb;charset=utf8', 'user', 'password');
+$xiconn = new PDO('mysql:host=localhost;dbname=xiweb;charset=utf8', 'user', 'password');
+
 $api_key = '1'; // Temporary, remove this after testing
+$accid = 1015; // Temporary, remove this after getting the authentication system implemented
+
 require_once("defines.php");
 
 if (empty($_GET['api_key'])) {
