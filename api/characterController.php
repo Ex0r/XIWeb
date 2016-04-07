@@ -27,50 +27,83 @@ else {
     }
     else {
         if (count($params) >= 3) {
-            if ($params[2] == 'view') { // If they are viewing the character
-                $charname = $params[1];
-                $charDetails = getCharacterDetails($charname);
-                if ($charDetails == CHARACTER_DOESNT_EXIST) {
-                    $result = $charDetails;
-                }
-                else {
-                    $charID = $charDetails['charid'];
-                    $result = $charID;
-                    $charJobs = getCharacterJobs($charID);
-                    $charLook = getCharacterLook($charID);
-                    $charProfile = getCharacterProfile($charID);
-                    $charEquipment = getCharacterEquipment($charID);
-                    $charSkills = getCharacterSkills($charID);
-                    $charStats = getCharacterStats($charID);
-                    $charInventory = getCharacterInventory($charID);
-                    $charExp = getCharacterExperience($charID);
-                    
-                    // Now we have to merge all of the arrays together so we can return it.
-                    $result = array_merge(
-                        $charDetails,
-                        $charJobs,
-                        $charLook, 
-                        $charProfile, 
-                        $charEquipment,
-                        $charSkills,
-                        $charStats,
-                        $charInventory,
-                        $charExp
-                    );
-                }
-            }
-            elseif ($params[2] == 'delete') { // If they decided to delete the character
-                if (!empty($params[3]) && $params[3] == 'confirm') { // They've confirmed deletion, so let's delete
-                    
-                    $result = 'Deleting character with confirmation';  // Remove after development
-                }
-                else { // They haven't confirmed yet, so let's prompt them to make sure they want to delete
-                    
-                    $result = 'Deleting character';  // Remove after development
-                }
+            $charname = $params[1];
+            
+            $charDetails = getCharacterDetails($charname);
+            
+            if (empty($charDetails)) {
+                $result = CHARACTER_DOESNT_EXIST;
             }
             else {
-                $result = INVALID_PARAMETER; // They gave us an invalid parameter, let's inform them
+                if ($params[2] == 'view') { // If they are viewing the character
+                    $result = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['jobs'] = getCharacterJobs($charID);
+                    $result['look'] = getCharacterLook($charID);
+                    $result['profile'] = getCharacterProfile($charID);
+                    $result['stats'] = getCharacterStats($charID);
+                    $result['equipment'] = getCharacterEquipment($charID);
+                    $result['inventory'] = getCharacterInventory($charID);
+                    
+                }
+                elseif ($params[2] == 'jobs') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['jobs'] = getCharacterJobs($charID);
+                }
+                elseif ($params[2] == 'stats') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['stats'] = getCharacterStats($charID);
+                }
+                elseif ($params[2] == 'profile') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['profile'] = getCharacterProfile($charID);
+                }
+                elseif ($params[2] == 'inventory') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['inventory'] = getCharacterInventory($charID);
+                }
+                elseif ($params[2] == 'equipment') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['equipment'] = getCharacterEquipment($charID);
+                }
+                elseif ($params[2] == 'experience') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['experience'] = getCharacterExperience($charID);
+                }
+                elseif ($params[2] == 'skills') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['skills'] = getCharacterSkills($charID);
+                }
+                elseif ($params[2] == 'spells') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['jobs'] = getCharacterSpells($charID);
+                }
+                elseif ($params[2] == 'look') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['look'] = getCharacterLook($charID);
+                }
+                elseif ($params[2] == 'delete') { // If they decided to delete the character
+                    if (!empty($params[3]) && $params[3] == 'confirm') { // They've confirmed deletion, so let's delete
+
+                        $result = 'Deleting character with confirmation';  // Remove after development
+                    }
+                    else { // They haven't confirmed yet, so let's prompt them to make sure they want to delete
+
+                        $result = 'Deleting character';  // Remove after development
+                    }
+                }
+                else {
+                    $result = INVALID_PARAMETER; // They gave us an invalid parameter, let's inform them
+                }
             }
         }
         else {
@@ -83,7 +116,7 @@ else {
 function getCharacterDetails($charname) {
     global $dbconn;
     
-    $strSQL = "SELECT * "
+    $strSQL = "SELECT charid, charname, nation, pos_zone, gmlevel, isnewplayer, mentor, campaign_allegiance, isstylelocked "
             . "FROM chars "
             . "WHERE charname=:charname";
     $statement = $dbconn->prepare($strSQL);
@@ -96,22 +129,9 @@ function getCharacterDetails($charname) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return CHARACTER_DOESNT_EXIST;
+            return NULL;
         }
         else {
-            $arrReturn[0]['merits'] = '';
-            $arrReturn[0]['missions'] = '';
-            $arrReturn[0]['assault'] = '';
-            $arrReturn[0]['campaign'] = '';
-            $arrReturn[0]['quests'] = '';
-            $arrReturn[0]['keyitems'] = '';
-            $arrReturn[0]['spells'] = '';
-            $arrReturn[0]['set_blue_spells'] = '';
-            $arrReturn[0]['abilities'] = '';
-            $arrReturn[0]['titles'] = '';
-            $arrReturn[0]['zones'] = '';
-            $arrReturn[0]['unlocked_weapons'] = '';
-
             return $arrReturn[0];
         }
         
@@ -161,7 +181,7 @@ function getCharacterLook($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn[0];
@@ -211,7 +231,7 @@ function getCharacterEquipment($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn;
@@ -236,7 +256,7 @@ function getCharacterSkills($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn;
@@ -261,7 +281,7 @@ function getCharacterStats($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn;
@@ -287,7 +307,7 @@ function getCharacterInventory($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn[0];
@@ -313,7 +333,7 @@ function getCharacterExperience($charid) {
         $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
         
         if (empty($arrReturn)) {
-            return array(NULL);
+            return NULL;
         }
         else {
             return $arrReturn[0];
