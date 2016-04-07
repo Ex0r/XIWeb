@@ -44,9 +44,13 @@ else {
                     $result['look'] = getCharacterLook($charID);
                     $result['profile'] = getCharacterProfile($charID);
                     $result['stats'] = getCharacterStats($charID);
+                    $result['skills'] = getCharacterSkills($charID);
+                    $result['spells'] = getCharacterSpells($charID);
                     $result['equipment'] = getCharacterEquipment($charID);
                     $result['inventory'] = getCharacterInventory($charID);
                     $result['visibility'] = getCharacterVisibility($charID);
+                    $result['points'] = getCharacterPoints($charID);
+                    $result['storage'] = getCharacterStorage($charID);
                     
                 }
                 elseif ($params[2] == 'jobs') {
@@ -58,6 +62,26 @@ else {
                     $res = $charDetails;
                     $charID = $charDetails['charid'];
                     $result['stats'] = getCharacterStats($charID);
+                }
+                elseif ($params[2] == 'details') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result = getCharacterDetails($charname);
+                }
+                elseif ($params[2] == 'visibility') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['visibility'] = getCharacterVisibility($charID);
+                }
+                elseif ($params[2] == 'storage') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['storage'] = getCharacterStorage($charID);
+                }
+                elseif ($params[2] == 'points') {
+                    $res = $charDetails;
+                    $charID = $charDetails['charid'];
+                    $result['points'] = getCharacterPoints($charID);
                 }
                 elseif ($params[2] == 'profile') {
                     $res = $charDetails;
@@ -87,7 +111,7 @@ else {
                 elseif ($params[2] == 'spells') {
                     $res = $charDetails;
                     $charID = $charDetails['charid'];
-                    $result['jobs'] = getCharacterSpells($charID);
+                    $result['spells'] = getCharacterSpells($charID);
                 }
                 elseif ($params[2] == 'look') {
                     $res = $charDetails;

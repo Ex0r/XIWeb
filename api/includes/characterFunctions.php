@@ -127,11 +127,85 @@ function getCharacterEquipment($charid) {
     }
 }
 
+
+function getCharacterSpells($charid) {
+    global $dbconn;
+    
+    $strSQL = "SELECT spellid FROM char_spells "
+            . "WHERE charid=:charid";
+    $statement = $dbconn->prepare($strSQL);
+    $statement->bindValue(':charid',$charid);
+    
+    if (!$statement->execute()) {
+        return UNKNOWN_ERROR;
+    }
+    else {
+        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($arrReturn)) {
+            return NULL;
+        }
+        else {
+            return $arrReturn;
+        }
+        
+    }
+}
+
+function getCharacterPoints($charid) {
+    global $dbconn;
+    
+    $strSQL = "SELECT * FROM char_points "
+            . "WHERE charid=:charid";
+    $statement = $dbconn->prepare($strSQL);
+    $statement->bindValue(':charid',$charid);
+    
+    if (!$statement->execute()) {
+        return UNKNOWN_ERROR;
+    }
+    else {
+        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($arrReturn)) {
+            return NULL;
+        }
+        else {
+            return $arrReturn;
+        }
+        
+    }
+}
+
 function getCharacterSkills($charid) {
     global $dbconn;
     
     $strSQL = "SELECT skillid, value, rank "
             . "FROM char_skills "
+            . "WHERE charid=:charid";
+    $statement = $dbconn->prepare($strSQL);
+    $statement->bindValue(':charid',$charid);
+    
+    if (!$statement->execute()) {
+        return UNKNOWN_ERROR;
+    }
+    else {
+        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($arrReturn)) {
+            return NULL;
+        }
+        else {
+            return $arrReturn;
+        }
+        
+    }
+}
+
+function getCharacterStorage($charid) {
+    global $dbconn;
+    
+    $strSQL = "SELECT * "
+            . "FROM char_storage "
             . "WHERE charid=:charid";
     $statement = $dbconn->prepare($strSQL);
     $statement->bindValue(':charid',$charid);
