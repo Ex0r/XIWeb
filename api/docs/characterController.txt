@@ -1,0 +1,154 @@
+characterController Endpoint listings and details
+
+There are several endpoints available in the characterController:
+
+character/list 
+---------------
+
+List all of the characters associated with your account
+
+Return values:
+
+array[
+  charid, 
+  charname
+]
+
+character/<name>/view
+----------------------
+
+View the full details of the specified character
+
+Return values:
+
+array[
+  accid, 
+  charid, 
+  charname,
+  nation,
+  pos_zone, 
+  gmlevel,
+  isnewplayer,
+  mentor,
+  campaign_allegiance,
+  isstylelocked,
+  array(jobs)[
+    unlocked,
+    genkai, 
+    war, 
+    mnk,
+    whm, 
+    blm,
+    rdm,
+    thf,
+    pld,
+    drk,
+    bst,
+    brd,
+    rng,
+    sam,
+    nin,
+    drg,
+    smn,
+    blu,
+    cor,
+    pup,
+    dnc,
+    sch,
+    geo,
+    run,
+  ]
+  array(look)[
+    charid,
+    face,
+    race,
+    size,
+    head,
+    body,
+    hands,
+    legs,  
+    feet,
+    main,
+    sub,
+    ranged
+  ]
+  array(profile)[
+    charid,
+    rank_points,
+    rank_sandoria,
+    rank_bastok,
+    rank_windurst,
+    fame_sandoria,
+    fame_bastok,
+    fame_windurst,
+    fame_norg,
+    fame_jeuno
+  ]
+  array(stats)[
+    charid,
+    hp,
+    mp,
+    nameflags,
+    mhflag,
+    mjob,
+    sjob,
+    death,
+    2h,
+    title,
+    bazaar_message,
+    zoning,
+    mlvl,
+    slvl,
+    pet_id,
+    pet_type,
+    pet_hp,
+    pet_mp
+  ]
+  array(equipment)[
+    charid,
+    slotid,
+    equipslotid,
+    containerid,
+  ]
+  array(inventory)[
+    charid,
+    location,
+    slot,
+    itemid,
+    quantity,
+    bazaar,
+    signature,
+    extra
+  ]
+  array(visibility) [
+    visibility (true for visible, false for hidden)
+  ]
+]
+
+character/<name>/equipment
+---------------------------
+
+List the equipment of the specified character
+
+array(equipment)[
+  charid,
+  slotid,
+  equipslotid,
+  containerid,
+]
+
+character/<name>/inventory
+---------------------------
+
+List the inventory of the specified character
+
+array(inventory)[
+  charid,
+  location,
+  slot,
+  itemid,
+  quantity,
+  bazaar,
+  signature,
+  extra
+]

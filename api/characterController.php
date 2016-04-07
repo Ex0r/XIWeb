@@ -11,6 +11,8 @@
  *  
  */
 
+require_once('includes/characterFunctions.php');
+
 /* CONTROLLER */
 
 if (count($params) < 2) {
@@ -44,6 +46,7 @@ else {
                     $result['stats'] = getCharacterStats($charID);
                     $result['equipment'] = getCharacterEquipment($charID);
                     $result['inventory'] = getCharacterInventory($charID);
+                    $result['visibility'] = getCharacterVisibility($charID);
                     
                 }
                 elseif ($params[2] == 'jobs') {
@@ -111,30 +114,3 @@ else {
         }
     }
 }
-
-
-function getCharacterDetails($charname) {
-    global $dbconn;
-    
-    $strSQL = "SELECT charid, charname, nation, pos_zone, gmlevel, isnewplayer, mentor, campaign_allegiance, isstylelocked "
-            . "FROM chars "
-            . "WHERE charname=:charname";
-    $statement = $dbconn->prepare($strSQL);
-    $statement->bindValue(':charname',$charname);
-    
-    if (!$statement->execute()) {
-        return UNKNOWN_ERROR;
-    }
-    else {
-        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
-        
-        if (empty($arrReturn)) {
-            return NULL;
-        }
-        else {
-            return $arrReturn[0];
-        }
-        
-    }
-}
-

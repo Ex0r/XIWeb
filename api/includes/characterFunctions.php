@@ -2,6 +2,31 @@
 
 /* CHARACTER RELATED FUNCTIONS */
 
+function getCharacterDetails($charname) {
+    global $dbconn;
+    
+    $strSQL = "SELECT accid, charid, charname, nation, pos_zone, gmlevel, isnewplayer, mentor, campaign_allegiance, isstylelocked "
+            . "FROM chars "
+            . "WHERE charname=:charname";
+    $statement = $dbconn->prepare($strSQL);
+    $statement->bindValue(':charname',$charname);
+    
+    if (!$statement->execute()) {
+        return UNKNOWN_ERROR;
+    }
+    else {
+        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($arrReturn)) {
+            return NULL;
+        }
+        else {
+            return $arrReturn[0];
+        }
+        
+    }
+}
+
 function getCharacterJobs($charid) {
     global $dbconn;
     
@@ -199,6 +224,36 @@ function getCharacterExperience($charid) {
         }
         else {
             return $arrReturn[0];
+        }
+        
+    }
+}
+
+function getCharacterVisibility($charid) {
+    global $xiconn;
+    
+    $strSQL = "SELECT visibility "
+            . "FROM chars_visibility "
+            . "WHERE charid=:charid";
+    $statement = $xiconn->prepare($strSQL);
+    $statement->bindValue(':charid',$charid);
+    
+    if (!$statement->execute()) {
+        return UNKNOWN_ERROR;
+    }
+    else {
+        $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($arrReturn)) {
+            return TRUE;
+        }
+        else {
+            if ($arrReturn[0]['visibility'] == 1) {
+                return TRUE;
+            }
+            else {
+            return FALSE;
+            }
         }
         
     }
