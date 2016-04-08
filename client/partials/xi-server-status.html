@@ -1,0 +1,9 @@
+﻿<section class="xi-server-status">
+    <div class="xi-server-status-container">
+        <span>Server: {{ serverInfo.ip }}</span>
+        <span class="xi-server-status-icon" ng-class="serverInfo.status == 0 ? 'server-ok' : 'server-error'">
+            <span class="glyphicon" ng-class="serverInfo.status == 0 ? 'glyphicon-ok-sign' : 'glyphicon-remove-sign'"></span>
+        </span>
+        <span>{{ serverInfo.status | serverStatus }}</span>
+    </div>
+</section>

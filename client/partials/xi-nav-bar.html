@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-show="{{ viewOptions.showHeader }}">
+﻿<nav class="navbar navbar-default navbar-fixed-top xi-header" role="navigation" ng-show="{{ viewOptions.showHeader }}">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
       <span class="sr-only">Toggle Navigation</span>
@@ -6,9 +6,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">
-      <i class="fa fa-home"></i>
-      <span>XIWeb</span>
+    <a class="navbar-brand xi-logo" href="#">
+      <span>XI</span><span>Web</span>
     </a>
   </div>
   
@@ -17,11 +16,11 @@
       <li ui-sref-active="active" ui-sref="characters">
         <a>Characters</a>
       </li>
+      <li ui-sref-active="active" ui-sref="worldMap">
+        <a>World</a>
+      </li>
       <li ng-show="{{ viewOptions.showAuctionHouse }}" ui-sref-active="active" ui-sref="auctionHouse">
         <a>Auction House</a>
-      </li>
-      <li ui-sref-active="active" ui-sref="worldMap">
-        <a>World Map</a>
       </li>
       <li ng-show="{{ viewOptions.showBeastiary }}" ui-sref-active="active" ui-sref="beastiary">
         <a>Beastiary</a>
@@ -29,17 +28,14 @@
       <li ng-show="{{ viewOptions.showItems }}" ui-sref-active="active" ui-sref="items">
         <a>Items</a>
       </li>
-      <li ng-show="{{ viewOptions.showSupport }}" ui-sref-active="active" ui-sref="support">
-        <a>Support</a>
+      <li ng-show="{{ viewOptions.showJobs }}" ui-sref-active="active" ui-sref="support">
+        <a>Jobs</a>
       </li>
     </ul>
   
-    <ul class="nav navbar-nav navbar-right">
-      <li ui-sref-active="active" ui-sref="account">
-        <a>Account</a>
-      </li>
+    <ul class="nav navbar-nav navbar-right" ng-hide="{{ user.isAuth }}">
       <li ng-show="{{ viewOptions.showMessages }}" class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           Messages <span ng-show="{{ user.newMessageCount() > 0 }}"><span class="badge">{{ user.newMessageCount() }}</span></span><span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
@@ -56,7 +52,24 @@
         </ul>
       </li>
       <li>
-        <a>Logout</a>
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{ user.userName }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a>Account</a>
+          </li>
+          <li>
+            <a>Preferences</a>
+          </li>
+          <hr />
+          <li ng-show="{{ viewOptions.showSupport }}">
+            <a>Support Center</a>
+          </li>
+          <li>
+            <a>Logout</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

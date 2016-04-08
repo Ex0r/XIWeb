@@ -6,13 +6,20 @@
     
     <link rel="shortcut icon" href="dist/images/favicon.ico">
     
+    <!-- Web Fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aclonica" />
+
+    <!-- Vendor Styles -->
     <link rel="stylesheet" type="text/css" href="dist/css/vendor/bootstrap.css" />
+
+    <!-- Page Styles -->
     <link rel="stylesheet" type="text/css" ng-href="dist/css/themes/default/stylesheet.css" />
   </head>
 
   <body>
     <div>
-        <nav-bar></nav-bar>
+        <xi-nav-bar></xi-nav-bar>
+        <xi-server-status></xi-server-status>
         <div ui-view></div>
     </div>
     
@@ -23,7 +30,7 @@
     <script type="text/javascript" src="dist/js/vendor/angular-ui-router.js"></script>
     <script type="text/javascript" src="dist/js/vendor/underscore.js"></script>
     
-    <!-- Application Scripts -->
+    <!-- Page Scripts -->
     <script type="text/javascript" src="dist/js/app.js"></script>
   </body>
 </html>

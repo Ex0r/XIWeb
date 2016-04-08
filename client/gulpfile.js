@@ -64,7 +64,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', function() {
-  return gulp.src(['./js/app.js', './js/services/*.js', './js/directives/*.js'])
+  return gulp.src(['./js/*.js', './js/services/*.js', './js/directives/*.js'])
     .pipe(concat('app.js'))
     //.pipe(babel(assign({}, babelOptions, { modules: 'amd' })))
     .pipe(gulp.dest('./dist/js/'));

@@ -1,0 +1,36 @@
+/* Header Styles */
+// TODO: Remove this once it's an image
+.xi-logo {
+    font-family: Aclonica;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: normal;
+	font-variant: normal;
+    color: #EEE !important;
+}
+
+.xi-logo:hover {
+    color: #AAA !important;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.xi-header {
+    background-color: #114955;
+    border-bottom: 0;
+}
+
+.navbar-nav > li > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #EEE !important;
+    font-size: 15px;
+}
+
+.navbar-nav > li > a:hover {
+    color: #AAA !important;
+}
+
+.navbar-nav.navbar-right {
+    margin-right: 15px;
+}

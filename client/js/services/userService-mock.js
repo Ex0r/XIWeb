@@ -1,4 +1,4 @@
-angular.module('xiWebApp').service('UserService', function($q) {
+angular.module('xiWebApp').service('UserService', ['$q', function($q) {
   var user = {
     email: '',
     userName: 'anonymous',
@@ -43,4 +43,4 @@ angular.module('xiWebApp').service('UserService', function($q) {
     
     // Route to index
   }
-});
+}]);

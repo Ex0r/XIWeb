@@ -1,8 +1,8 @@
-﻿angular.module('xiWebApp').directive('navBar', function($state, UserService, ViewService) {
+﻿angular.module('xiWebApp').directive('xiNavBar', ['$state', 'UserService', 'ViewService', function($state, UserService, ViewService) {
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: 'dist/partials/nav-bar.html',
+    templateUrl: 'dist/partials/xi-nav-bar.html',
     controller: function($scope) {
       $scope.isNavigating = false;
       
@@ -10,4 +10,4 @@
       $scope.viewOptions = ViewService.getViewOptions();
     }
   }
-});
+}]);
