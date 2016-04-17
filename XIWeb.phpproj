@@ -4628,7 +4628,7 @@
     <Content Include="client\js\directives\xiNavBar.js" />
     <Content Include="client\js\filters.js" />
     <Content Include="client\js\services\userService-mock.js" />
-    <Content Include="client\js\services\viewService-mock - Copy.js" />
+    <Content Include="client\js\services\viewService-mock.js" />
     <Content Include="client\js\services\serverService-mock.js" />
     <Content Include="client\js\vendor\angular-ui-router.js" />
     <Content Include="client\js\vendor\angular.js" />
@@ -23331,6 +23331,8 @@
     <Content Include="client\partials\xi-server-status.html" />
     <Content Include="client\partials\index.html" />
     <Content Include="client\partials\xi-nav-bar.html" />
+    <Content Include="client\sass\themes\default\_serverStatus.scss" />
+    <Content Include="client\sass\themes\default\_header.scss" />
     <Content Include="client\sass\themes\default\stylesheet.scss" />
     <Content Include="client\sass\_shared.scss" />
   </ItemGroup>

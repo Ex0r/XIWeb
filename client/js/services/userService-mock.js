@@ -9,7 +9,7 @@ angular.module('xiWebApp').service('UserService', ['$q', function($q) {
       { messageId: 3, senderId: 1, sender: "Other User", body: "This is the third message body.", status: 1 }
     ],
     getNewMessageCount: function() {
-      return _.filter(messages, function(message) {
+      return _.filter(this.messages, function(message) {
         return message.status == 1;
       }).length;
     }

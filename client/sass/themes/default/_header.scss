@@ -23,14 +23,44 @@
 .navbar-nav > li > a {
     cursor: pointer;
     text-decoration: none;
-    color: #EEE !important;
+    color: #EEE;
     font-size: 15px;
 }
 
 .navbar-nav > li > a:hover {
-    color: #AAA !important;
+    color: #AAA;
 }
 
 .navbar-nav.navbar-right {
     margin-right: 15px;
+}
+
+.xi-header-messages {
+    position: relative;
+}
+
+.xi-header-messages > a:hover {
+    color: #EEE !important;
+}
+
+.xi-header-messages:hover > .xi-header-message-count {
+    background-color: #8B0A10;
+}
+
+.xi-header-message-count {
+    position: absolute;
+    bottom: 10px;
+    right: 6px;
+    color: #EEE;
+    background-color: #AD2C30;
+    min-width: 16px;
+    padding: 5px 5px 0 4px;
+    text-align: center;
+    height: 17px;
+    line-height: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
 }

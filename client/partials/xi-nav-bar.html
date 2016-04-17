@@ -28,49 +28,50 @@
       <li ng-show="{{ viewOptions.showItems }}" ui-sref-active="active" ui-sref="items">
         <a>Items</a>
       </li>
-      <li ng-show="{{ viewOptions.showJobs }}" ui-sref-active="active" ui-sref="support">
+      <li ng-show="{{ viewOptions.showJobs }}" ui-sref-active="active" ui-sref="jobs">
         <a>Jobs</a>
       </li>
     </ul>
   
-    <ul class="nav navbar-nav navbar-right" ng-hide="{{ user.isAuth }}">
-      <li ng-show="{{ viewOptions.showMessages }}" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Messages <span ng-show="{{ user.newMessageCount() > 0 }}"><span class="badge">{{ user.newMessageCount() }}</span></span><span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-edit"></span> Compose Message
-            </a>
+      <ul class="nav navbar-nav navbar-right" ng-hide="{{ user.isAuth }}">
+          <li ng-show="{{ viewOptions.showMessages }}" class="dropdown xi-header-messages">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-envelope"></span>
+              </a>
+              <div class="xi-header-message-count" ng-show="{{ user.getNewMessageCount() > 0 }}">{{ user.getNewMessageCount() }}</div>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a href="#">
+                          <span class="glyphicon glyphicon-edit"></span> Compose Message
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#">
+                          <span class="glyphicon glyphicon-envelope"></span> View Messages <span ng-show="{{ user.getNewMessageCount() > 0 }}"><span class="badge">{{ user.getNewMessageCount() }}</span></span>
+                      </a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-envelope"></span> View Messages <span ng-show="{{ user.newMessageCount() > 0 }}"><span class="badge">{{ user.newMessageCount() }}</span></span>
-            </a>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  {{ user.userName }} <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li ui-sref="account">
+                      <a>Account</a>
+                  </li>
+                  <li ui-sref="preferences">
+                      <a>Preferences</a>
+                  </li>
+                  <hr />
+                  <li ng-show="{{ viewOptions.showSupport }}" ui-sref="support">
+                      <a>Support Center</a>
+                  </li>
+                  <li>
+                      <a>Logout</a>
+                  </li>
+              </ul>
           </li>
-        </ul>
-      </li>
-      <li>
-        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          {{ user.userName }} <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a>Account</a>
-          </li>
-          <li>
-            <a>Preferences</a>
-          </li>
-          <hr />
-          <li ng-show="{{ viewOptions.showSupport }}">
-            <a>Support Center</a>
-          </li>
-          <li>
-            <a>Logout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+      </ul>
   </div>
 </nav>

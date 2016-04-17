@@ -1,9 +1,8 @@
-@import '../../shared';
-
 body {
-  background: white; 
+  background: #EEE; 
 }
 
 @import 'header';
-
 @import 'serverStatus';
+
+@import '../../shared';
