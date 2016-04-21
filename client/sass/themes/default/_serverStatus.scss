@@ -1,32 +1,32 @@
 /* Server Status Styles */
 .xi-server-status {
-    position: fixed;
-    top: 50px;
+  position: fixed;
+  top: 50px;
 }
 
 .xi-server-status-container {
-    font-size: 14px;
-    color: #EEE;
-    background: #45818E;
-    padding: 5px;
+  font-size: 14px;
+  color: #EEE;
+  background: #45818E;
+  padding: 5px;
 }
 
 .xi-server-status-icon {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .xi-server-status-icon > span {
-    background: #EEE;
-    border-radius: 15px;
-    height: 13px;
-    width: 13px;
-    margin-top: 2px;
+  background: #EEE;
+  border-radius: 15px;
+  height: 13px;
+  width: 13px;
+  margin-top: 2px;
 }
 
 .server-ok {
-    color: #2CAD60;
+  color: #2CAD60;
 }
 
 .server-error {
-    color: #AD2C30;
+  color: #AD2C30;
 }

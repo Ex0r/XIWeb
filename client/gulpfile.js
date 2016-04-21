@@ -66,7 +66,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', function() {
-  return gulp.src(['./js/*.js', './js/services/*.js', './js/directives/*.js'])
+  return gulp.src(['./js/*.js', './js/controllers/*.js', './js/directives/*.js', './js/services/*.js'])
     .pipe(concat('app.js'))
     //.pipe(babel(assign({}, babelOptions, { modules: 'amd' })))
     .pipe(gulp.dest('./dist/js/'));
@@ -115,7 +115,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('watch', function() {
-    watch(['js/*.js', 'js/**/*.js', 'partials/*.html', 'sass/*.scss', 'sass/themes/**/*.scss'], batch(function(events, done) {
+    watch(['index.html', 'js/*.js', 'js/**/*.js', 'partials/*.html', 'sass/*.scss', 'sass/themes/**/*.scss'], batch(function(events, done) {
         gulp.start('default', done);
     }));
 });

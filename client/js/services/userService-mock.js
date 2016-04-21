@@ -1,46 +1,44 @@
-angular.module('xiWebApp').service('UserService', ['$q', function($q) {
-  var user = {
-    email: '',
-    userName: 'anonymous',
-    isAuth: false,
-    messages: [
-      { messageId: 1, senderId: 1, sender: "Other User", body: "This is the message body.", status: 0 },
-      { messageId: 2, senderId: 1, sender: "Other User", body: "This is the second message body.", status: 1 },
-      { messageId: 3, senderId: 1, sender: "Other User", body: "This is the third message body.", status: 1 }
-    ],
-    getNewMessageCount: function() {
-      return _.filter(this.messages, function(message) {
-        return message.status == 1;
-      }).length;
+angular.module('xiWebApp').factory('userService', ['xiWebService', function(XiWebService) {
+  var service = {};
+  
+  service.login = function(email, password) {
+    if (!email || !password) {
+      alert('Cannot leave email or password blank!');
+      return;
+    } 
+    
+    XiWebService.login(email, password).then(function(status) {
+      alert('Login successful!');
+    }, function(error) {
+      alert('Login failed!');
+    });
+  }
+  
+  service.forgotPassword = function(email) {
+    if (!email) {
+      alert('Cannot leave email blank!');
+      return;
     }
+    
+    XiWebService.forgotPassword(email).then(function(status) {
+      alert('Password has been reset, check your email.');
+    }, function(error) {
+      alert('Unable to reset password')
+    });
   }
   
-  this.getUser = function() {
-    return user;
-  }
-    
-  this.login = function(email, password) {
-    if (!email || !password)
+  service.registerAccount = function(userName, email, password) {
+    if (!userName || !email || !password) {
+      alert('Cannot leave user name, email or password blank!');
       return;
+    }
     
-    user.isAuth = true;
-    
-    // Route to index
+    XiWebService.registerAccount(userName, email, password).then(function(status) {
+      alert('Account registered successfully!');
+    }, function(error) {
+      alert('Unable to create account');
+    });
   }
   
-  this.forgotPassword = function(email) {
-    if (!email)
-      return;
-  }
-  
-  this.register = function(userName, email, password) {
-    if (!userName || !email || !password)
-      return;
-    
-    user.email = email;
-    user.userName = userName;
-    user.isAuth = true;
-    
-    // Route to index
-  }
+  return service;
 }]);

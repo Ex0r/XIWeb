@@ -1,13 +1,13 @@
-﻿angular.module('xiWebApp').directive('xiNavBar', ['$state', 'UserService', 'ViewService', function($state, UserService, ViewService) {
+﻿angular.module('xiWebApp').directive('xiNavBar', ['$state', function($state) {
   return {
     restrict: 'E',
-    scope: {},
+    scope: {
+      user: '=?',
+      viewOptions: '=?'
+    },
     templateUrl: 'dist/partials/xi-nav-bar.html',
     controller: function($scope) {
       $scope.isNavigating = false;
-      
-      $scope.user = UserService.getUser();
-      $scope.viewOptions = ViewService.getViewOptions();
     }
   }
 }]);

@@ -18,8 +18,11 @@
 
   <body>
     <div>
-        <xi-nav-bar></xi-nav-bar>
-        <xi-server-status></xi-server-status>
+        <div class="xi-background-image-container col-sm-5 col-sm-offset-3">
+            <img id="splashlogo" src="dist/images/ff11_logo.png" class="img-responsive" />
+        </div>
+        <xi-nav-bar user="user" viewOptions="options.view"></xi-nav-bar>
+        <xi-server-status serverInfo="serverInfo"></xi-server-status>
         <div class="xi-body" ui-view></div>
     </div>
     

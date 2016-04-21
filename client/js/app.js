@@ -7,40 +7,16 @@ angular.module('xiWebApp').config(function($stateProvider, $urlRouterProvider) {
     .state('index', {
       url: '/',
       templateUrl: 'dist/partials/index.html',
-      controller: function($scope, user) {
-        $scope.user = user;
-        $scope.theme = 'default';
-      },
-      resolve: {
-        user: function(UserService) { 
-          return UserService.getUser();
-        }
-      }
+      controller: 'PageController'
     })
     .state('login', {
       url: '/login',
       templateUrl: 'dist/partials/login.html',
-      controller: function($scope, user) {
-        $scope.user = user;
-        $scope.theme = 'default';
-      },
-      resolve: {
-        user: function(UserService) { 
-          return UserService.getUser();
-        }
-      }
+      controller: 'PageController'
     })
     .state('register', {
       url: '/register',
       templateUrl: 'dist/partials/register.html',
-      controller: function($scope, user) {
-        $scope.user = user;
-        $scope.theme = 'default';
-      },
-      resolve: {
-        emails: function(UserService) {
-          return UserService.getUser();
-        }
-      }
+      controller: 'PageController'
     });
 });
