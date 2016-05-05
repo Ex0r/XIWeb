@@ -1,7 +1,8 @@
-﻿angular.module('xiWebApp').controller('PageController', ['$scope', '$state', '$timeout', 'xiWebService', function($scope, $state, $timeout, XiWebService) {
+﻿angular.module('xiWebApp').controller('PageController', ['$scope', '$state', '$timeout', 'locale', 'xiWebService', function($scope, $state, $timeout, locale, XiWebService) {
     var dataLoadTimerPromise = null;
     
     $scope.initialLoad = true;
+    $scope.languageSet = false;
     
     $scope.loadPageData = function() {
       XiWebService.getData().then(function(data) {
@@ -11,6 +12,8 @@
         
         if ($scope.initialLoad) {
           $scope.initialLoad = false;
+          locale.setLocale($scope.options.language);
+          
           if (!$scope.user.isAuth) {
             $state.go('login');
           } else {
@@ -28,6 +31,10 @@
       $timeout.cancel(dataLoadTimerPromise);
       $scope.loadPageData();
     }
+    
+    // $scope.$on('languageSet', function() {
+    //   $scope.languageSet = true;
+    // });
     
     load();
 }]);

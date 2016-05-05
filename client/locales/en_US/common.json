@@ -1,0 +1,18 @@
+{
+  "HEADER_CHARACTERS" : "Characters",
+  "HEADER_WORLD": "World",
+  "HEADER_AUCTION_HOUSE": "Auction House",
+  "HEADER_BEASTIARY" : "Beastiary",
+  "HEADER_ITEMS": "Items",
+  "HEADER_JOBS": "Jobs",
+  "HEADER_COMPOSE_MESSAGE": "Compose Message",
+  "HEADER_VIEW_MESSAGES": "View Messages",
+  "HEADER_ACCOUNT": "Account",
+  "HEADER_PREFERENCES": "Preferences",
+  "HEADER_SUPPORT_CENTER": "Support Center",
+  "HEADER_LOGOUT": "Logout",
+  
+  "SERVER_STATUS_SERVER": "Server",
+  "SERVER_STATUS_ONLINE": "Online",
+  "SERVER_STATUS_OFFLINE": "Offline"
+}

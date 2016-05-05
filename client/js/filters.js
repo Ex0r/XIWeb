@@ -2,10 +2,10 @@
   return function(input) {
     switch (input) {
       case 0:
-        return "Online";
+        return "common.SERVER_STATUS_ONLINE";
       case 1:
       default:
-        return "Offline";
+        return "common.SERVER_STATUS_OFFLINE";
     }
   };
 });

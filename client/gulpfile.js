@@ -31,6 +31,9 @@ var devDependencies = {
     './bower_components/bootstrap/dist/js/bootstrap.js',
     './bower_components/angular/angular.js',
     './bower_components/angular-ui-router/release/angular-ui-router.js',
+    './bower_components/angular-cookies/angular-cookies.js',
+    './bower_components/angular-sanitize/angular-sanitize.js',
+    './bower_components/angular-localization/angular-localization.js',
     './bower_components/underscore/underscore.js'
   ],
   css: [
@@ -56,8 +59,11 @@ gulp.task('dependencies', function() {
     
   var images = gulp.src(['./images/*.*', './images/**/*.*'])
     .pipe(gulp.dest('./dist/images/'));
+    
+  var locales = gulp.src('./locales/**/*.*')
+    .pipe(gulp.dest('./dist/locales/'));
   
-  return merge(js, css, fonts, partials, images);
+  return merge(js, css, fonts, partials, images, locales);
 });
 
 gulp.task('clean', function() {
@@ -115,7 +121,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('watch', function() {
-    watch(['index.html', 'js/*.js', 'js/**/*.js', 'partials/*.html', 'sass/*.scss', 'sass/themes/**/*.scss'], batch(function(events, done) {
+    watch(['index.html', 'js/*.js', 'js/**/*.js', 'locales/**/*.json', 'partials/*.html', 'sass/*.scss', 'sass/themes/**/*.scss'], batch(function(events, done) {
         gulp.start('default', done);
     }));
 });

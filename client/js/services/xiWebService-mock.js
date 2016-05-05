@@ -1,6 +1,8 @@
 angular.module('xiWebApp').factory('xiWebService', ['$q', function($q) {
   var service = {};
   
+  service.rootUrl = '/';
+  
   var user = {
     email: '',
     userName: 'anonymous',

@@ -14,22 +14,22 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="nav navbar-nav" ng-show="{{ user.isAuth }}">
       <li ui-sref-active="active" ui-sref="characters">
-        <a>Characters</a>
+        <a i18n="common.HEADER_CHARACTERS"></a>
       </li>
       <li ui-sref-active="active" ui-sref="worldMap">
-        <a>World</a>
+        <a i18n="common.HEADER_WORLD"></a>
       </li>
       <li ng-show="{{ viewOptions.showAuctionHouse }}" ui-sref-active="active" ui-sref="auctionHouse">
-        <a>Auction House</a>
+        <a i18n="common.HEADER_AUCTION_HOUSE"></a>
       </li>
       <li ng-show="{{ viewOptions.showBeastiary }}" ui-sref-active="active" ui-sref="beastiary">
-        <a>Beastiary</a>
+        <a i18n="common.HEADER_BEASTIARY"></a>
       </li>
       <li ng-show="{{ viewOptions.showItems }}" ui-sref-active="active" ui-sref="items">
-        <a>Items</a>
+        <a i18n="common.HEADER_ITEMS"></a>
       </li>
       <li ng-show="{{ viewOptions.showJobs }}" ui-sref-active="active" ui-sref="jobs">
-        <a>Jobs</a>
+        <a i18n="common.HEADER_JOBS"></a>
       </li>
     </ul>
   
@@ -42,12 +42,17 @@
         <ul class="dropdown-menu">
           <li>
             <a href="#">
-              <span class="glyphicon glyphicon-edit"></span> Compose Message
+              <span class="glyphicon glyphicon-edit"></span>
+              <span i18n="common.HEADER_COMPOSE_MESSAGE"></span>
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="glyphicon glyphicon-envelope"></span> View Messages <span ng-show="{{ user.getNewMessageCount() > 0 }}"><span class="badge">{{ user.getNewMessageCount() }}</span></span>
+              <span class="glyphicon glyphicon-envelope"></span>
+              <span i18n="common.HEADER_VIEW_MESSAGES"></span>
+              <span ng-show="{{ user.getNewMessageCount() > 0 }}">
+                <span class="badge">{{ user.getNewMessageCount() }}</span>
+              </span>
             </a>
           </li>
         </ul>
@@ -58,17 +63,17 @@
         </a>
         <ul class="dropdown-menu">
           <li ui-sref="account">
-            <a>Account</a>
+            <a i18n="common.HEADER_ACCOUNT"></a>
           </li>
           <li ui-sref="preferences">
-            <a>Preferences</a>
+            <a i18n="common.HEADER_PREFERENCES"></a>
           </li>
           <hr />
           <li ng-show="{{ viewOptions.showSupport }}" ui-sref="support">
-            <a>Support Center</a>
+            <a i18n="common.HEADER_SUPPORT_CENTER"></a>
           </li>
           <li>
-            <a>Logout</a>
+            <a i18n="common.HEADER_LOGOUT"></a>
           </li>
         </ul>
       </li>
