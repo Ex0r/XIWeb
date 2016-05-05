@@ -1,32 +1,20 @@
 /* Header Styles */
-// TODO: Remove this once it's an image
-.xi-logo {
-  font-family: Aclonica;
-  font-size: 22px;
-  font-weight: 500;
-  font-style: normal;
-  font-variant: normal;
-  color: #EEE !important;
-}
-
-.xi-logo:hover {
-  color: #AAA !important;
-  font-size: 22px;
-  font-weight: 800;
+.navbar-default .navbar-brand {
+  &:hover {
+    color: #AAA;
+  }
+  
+  color: #EEE;
 }
 
 .xi-header {
   background-color: #114955;
-  border-bottom: 0;
 }
 
 .navbar-default {
   .navbar-nav > li {
     > a {
-      cursor: pointer;
-      text-decoration: none;
       color: #EEE;
-      font-size: 15px;
     }
     
     > a:hover {
@@ -35,16 +23,10 @@
   }
 }
 
-.navbar-nav.navbar-right {
-  margin-right: 15px;
-}
-
 .xi-header-messages {
   > a:hover {
     color: #EEE;
   }
-  
-  position: relative;
 }
 
 .xi-header-messages:hover > .xi-header-message-count {
@@ -52,19 +34,15 @@
 }
 
 .xi-header-message-count {
-  position: absolute;
-  bottom: 10px;
-  right: 6px;
   color: #EEE;
   background-color: #AD2C30;
-  min-width: 16px;
-  padding: 5px 5px 0 4px;
-  text-align: center;
-  height: 17px;
-  line-height: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 15px;
-  display: inline-block;
-  cursor: pointer;
+}
+
+.nav .open > a,
+.navbar-default .navbar-nav > .open > a {
+  &:hover {
+    color: #AAA;
+  }
+  
+  color: #AAA;
 }

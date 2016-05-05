@@ -1,3 +1,9 @@
+@import '../../shared';
+
+@import 'header';
+@import 'serverStatus';
+
+// Global Styles
 body {
   background: #EEE; 
 }
@@ -5,12 +11,5 @@ body {
 // Login Styles
 .xi-login-container {
   background: rgba(0,0,0,0.7);
-  display: table;
-  margin: 200px auto 0;
   color: #EEE;
 }
-
-@import 'header';
-@import 'serverStatus';
-
-@import '../../shared';
