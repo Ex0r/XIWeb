@@ -1,7 +1,7 @@
-﻿angular.module('xiWebApp').directive('xiNavBar', ['$state', function($state) {
+﻿angular.module('xiWebApp').directive('xiNavBar', [function() {
   return {
     restrict: 'E',
-    scope: {
+    scope: { 
       user: '=?',
       viewOptions: '=?'
     },

@@ -20,15 +20,19 @@
   border-bottom: 0;
 }
 
-.navbar-nav > li > a {
-  cursor: pointer;
-  text-decoration: none;
-  color: #EEE;
-  font-size: 15px;
-}
-
-.navbar-nav > li > a:hover {
-  color: #AAA;
+.navbar-default {
+  .navbar-nav > li {
+    > a {
+      cursor: pointer;
+      text-decoration: none;
+      color: #EEE;
+      font-size: 15px;
+    }
+    
+    > a:hover {
+      color: #AAA;
+    }
+  }
 }
 
 .navbar-nav.navbar-right {
@@ -36,11 +40,11 @@
 }
 
 .xi-header-messages {
+  > a:hover {
+    color: #EEE;
+  }
+  
   position: relative;
-}
-
-.xi-header-messages > a:hover {
-  color: #EEE !important;
 }
 
 .xi-header-messages:hover > .xi-header-message-count {

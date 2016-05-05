@@ -26,7 +26,8 @@ angular.module('xiWebApp').factory('xiWebService', ['$q', function($q) {
       showSupport: true,
       showMessages: true
     },
-    language: 'en_US'
+    language: 'en_US',
+    theme: 'default'
   }
   
   var serverInfo = {
