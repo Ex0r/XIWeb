@@ -10,13 +10,26 @@ hr {
   margin: 10px 8px;
 }
 
+a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Shared Component Styles */
+.xi-button {
+  border-radius: 0;
+  border-width: 2px;
+  border-style: solid;
+}
+
 /* Header Shared Styles */
 // TODO: Remove this once it's an image
 .xi-logo {
-  &:hover {
-    font-weight: 800;
-  }
-  
   font-family: Aclonica;
   font-size: 22px;
   font-weight: 500;
@@ -104,8 +117,130 @@ hr {
 
 /* Login Shared Styles */
 .xi-login-container {
+  a {
+    font-size: 15px;
+  }
+  width: 650px;
   display: table;
   margin: 200px auto 0;
+}
+
+.xi-container-header {
+  > h1 {
+    margin-left: 20px;
+  }
+}
+
+.xi-container-instructions {
+  margin: 15px 15px 25px;
+}
+
+.xi-container-fields {
+  display: table;
+  margin: auto;
+}
+
+.xi-container-field {
+  > label {
+    margin-right: 5px;
+    width: 150px;
+    font-size: 14px;
+  }
+  
+  > input {
+    width: 350px;
+  }
+  
+  margin-bottom: 15px;
+}
+
+.xi-container-actions {
+  display: table;
+  margin: auto;
+}
+
+.xi-login-button {
+  padding-left: 35px;
+  padding-right: 35px;
+  margin-right: 40px;
+}
+
+.xi-container-footer {
+  > span {
+    margin-right: 10px;
+  }
+  
+  margin: 20px auto;
+  display: table;
+  font-size: 15px;
+}
+
+@media (max-width: 992px) {
+  .xi-login-container {
+    width: 550px;
+  }
+  
+  .xi-container-field {
+    > label {
+      margin-right: 5px;
+      width: 125px;
+      font-size: 14px;
+    }
+    
+    > input {
+      width: 325px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .xi-login-container {
+    width: 400px;
+  }
+  
+  .xi-container-field {
+    > label {
+      margin-right: 5px;
+      width: 100px;
+      font-size: 12px;
+    }
+    
+    > input {
+      width: 250px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .xi-login-container {
+    a {
+      font-size: 13px;
+    }
+    
+    width: 250px;
+  }
+  
+  .xi-container-field {
+    > label {
+      margin-right: 5px;
+      width: 95px;
+      font-size: 10px;
+    }
+    
+    > input {
+      width: 125px;
+    }
+  }
+  
+  .xi-login-button {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 15px;
+  }
+  
+  .xi-container-footer {
+    font-size: 13px;
+  }
 }
 
 /* Body Shared Styles */

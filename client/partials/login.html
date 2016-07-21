@@ -1,3 +1,29 @@
-﻿<div class='xi-login-container' style="height: 250px; width: 350px;">
-    <p>Login Page</p>
+﻿<div class="xi-login-container">
+    <div class="xi-container-header">
+      <h1 i18n="common.LOGIN_TITLE"></h1>
+    </div>
+    <hr />
+    <div class="xi-container-content">
+      <div class="xi-container-instructions" i18n="common.LOGIN_INSTRUCTIONS"></div>
+      <div class="xi-container-fields">
+        <form>
+          <div class="xi-container-field">
+            <label for="usernameEmailInput" i18n="common.LOGIN_USERNAME_EMAIL"></label>
+            <input id="usernameEmailInput" type="email" name="email" ng-model="user.email" />
+          </div>
+          <div class="xi-container-field">
+            <label for="passwordInput" i18n="common.LOGIN_PASSWORD"></label>
+            <input id="passwordInput" type="password" name="password" ng-model="user.password" />
+          </div>
+          <div class="xi-container-actions">
+            <button class="btn xi-button xi-login-button" i18n="common.LOGIN_BUTTON_TEXT" ng-click="login(user)"></button>
+            <a i18n="common.LOGIN_FORGOT_PASSWORD"></a>
+          </div>
+        </form>
+      </div>
+      <div class="xi-container-footer">
+        <span i18n="common.LOGIN_NOT_REGISTERED"></span>
+        <a i18n="common.LOGIN_CREATE_ACCOUNT"></a>
+      </div>
+    </div>
 </div>

@@ -32,9 +32,5 @@
       $scope.loadPageData();
     }
     
-    // $scope.$on('languageSet', function() {
-    //   $scope.languageSet = true;
-    // });
-    
     load();
 }]);

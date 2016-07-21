@@ -3,13 +3,53 @@
 @import 'header';
 @import 'serverStatus';
 
-// Global Styles
+/* Global Styles */
 body {
   background: #EEE; 
 }
 
-// Login Styles
+a {
+  &:hover,
+  &:focus {
+    color: #375C88;
+  }
+  
+  color: #597EAA;
+}
+
+/* Shared Component Styles */
+.xi-button {
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    color: white;
+    border-color: #EEE;
+  }
+  
+  color: white;
+}
+
+/* Login Styles */
 .xi-login-container {
+  input {
+    color: #333;
+  }
+  
   background: rgba(0,0,0,0.7);
   color: #EEE;
+}
+
+.xi-login-button {
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    background-color: #023E4B;
+    color: white;
+  }
+  
+  background-color: #134F5C;
+  border-color: #134F5C;
+  color: white;
 }

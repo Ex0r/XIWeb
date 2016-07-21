@@ -12,12 +12,17 @@ angular.module('xiWebApp').config(function($stateProvider, $urlRouterProvider) {
     .state('login', {
       url: '/login',
       templateUrl: 'dist/partials/login.html',
-      controller: 'PageController'
+      controller: 'AccountController'
     })
     .state('register', {
       url: '/register',
       templateUrl: 'dist/partials/register.html',
-      controller: 'PageController'
+      controller: 'AccountController'
+    })
+    .state('forgot', {
+      url: '/forgot',
+      templateUrl: 'dist/partials/forgot.html',
+      controller: 'AccountController'
     });
 });
 

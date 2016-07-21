@@ -38,6 +38,12 @@
   background-color: #AD2C30;
 }
 
+.xi-account-menu {
+  > hr {
+    margin: 10px 8px;
+  }
+}
+
 .nav .open > a,
 .navbar-default .navbar-nav > .open > a {
   &:hover {

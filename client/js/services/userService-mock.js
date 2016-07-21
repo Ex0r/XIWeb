@@ -9,8 +9,10 @@ angular.module('xiWebApp').factory('userService', ['xiWebService', function(XiWe
     
     XiWebService.login(email, password).then(function(status) {
       alert('Login successful!');
+      return 0;
     }, function(error) {
       alert('Login failed!');
+      return 1;
     });
   }
   

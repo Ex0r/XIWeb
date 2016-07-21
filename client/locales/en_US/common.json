@@ -14,5 +14,14 @@
   
   "SERVER_STATUS_SERVER": "Server",
   "SERVER_STATUS_ONLINE": "Online",
-  "SERVER_STATUS_OFFLINE": "Offline"
+  "SERVER_STATUS_OFFLINE": "Offline",
+  
+  "LOGIN_TITLE": "Login",
+  "LOGIN_INSTRUCTIONS": "This is the text to describe what the user should do at this dialog. They can choose to either sign in or create a new account if they don't have one.",
+  "LOGIN_USERNAME_EMAIL": "Username/Email:",
+  "LOGIN_PASSWORD": "Password:",
+  "LOGIN_BUTTON_TEXT": "Login",
+  "LOGIN_FORGOT_PASSWORD": "Forgot Password?",
+  "LOGIN_NOT_REGISTERED": "Not Registered?",
+  "LOGIN_CREATE_ACCOUNT": "Create Account"
 }
